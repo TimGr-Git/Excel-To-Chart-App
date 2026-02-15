@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "remove duplicate data table and delete reports page",
+      "type": "shell",
+      "command": "powershell -Command \"Remove-Item -LiteralPath 'c:\\Users\\timgr\\Documents\\React Projects\\chart project\\chart-app\\app\\components\\pages\\ReportsPage.tsx' -Force; Remove-Item -LiteralPath 'c:\\Users\\timgr\\Documents\\React Projects\\chart project\\chart-app\\app\\components\\pages\\DataTable.tsx' -Force; Rename-Item -LiteralPath 'c:\\Users\\timgr\\Documents\\React Projects\\chart project\\chart-app\\app\\components\\pages\\DataTablePage.tsx' -NewName 'DataTable.tsx' -Force\"",
+      "isBackground": false,
+      "problemMatcher": []
+    }
+  ]
+}

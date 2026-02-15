@@ -5,7 +5,10 @@
   --foreground: #171717;
 }
 
-@theme inline {
+/* Replaced invalid `@theme inline` at-rule with a normal :root block so
+   PostCSS / editors don't report unknown at-rule errors. The variables are
+   preserved and available globally */
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -23,4 +26,26 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Prevent the blinking insertion caret from appearing when clicking non-editable elements.
+   Exclude actual text inputs, textareas and elements that declare contenteditable. */
+:where(*:not(input):not(textarea):not([contenteditable])):focus {
+  caret-color: transparent !important;
+}
+
+/* Show pointer cursor for common interactive elements and for elements explicitly marked as clickable.
+   Use a :where() selector to keep specificity low. */
+:where(
+  button,
+  a[href],
+  summary,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  .clickable,
+  [data-clickable="true"]
+) {
+  cursor: pointer;
 }
